@@ -1,0 +1,101 @@
+*{
+    margin: 0px 0px;
+    padding: 0px 0px;
+}
+#cabecalho{
+    font-size: 35px;
+    background-color: tan;
+    padding-left: 40px; 
+    padding-right: 40px; 
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+#inf{
+    font-size: 15px;
+    background-color: wheat;
+    padding-left: 60px; 
+    padding-right: 0px; 
+    padding-top: 100px;
+    padding-bottom: 270px;
+}
+#foto{
+    float: right;
+    position: absolute;
+    top: 300px;
+    right: 200px;
+}
+#titulo{
+    background-color: tan;
+    padding-left: 20px; 
+    padding-right: 20px; 
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.menus{
+    width: auto;
+    height: 50px;
+    padding-top: 20px;
+    background-color: black;
+}
+.parte{
+    width: auto;
+    height: 100px;
+    padding-top: 50px;
+    padding-left: 100px;
+    background-color: wheat;
+}
+.partes{
+    width: auto;
+    height: 330px;
+    padding-top: 40px;
+    padding-left: 100px;;
+    background-color: wheat;
+}
+.comling{
+    width: auto;
+    height: 180px;
+    padding-top: 20px;
+    padding-left: 100px;;
+    background-color: wheat
+}
+.curriculo{
+    background-color: whitesmoke;
+    width: 500px;
+    height: 200px;
+    padding-left: 90px; 
+    padding-right: 90px; 
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+.trabalho{
+    background-color: rgb(241, 234, 234);
+    width: 500px;
+    height: 200px;
+    padding-top: 70px;
+    padding-left: 100px;
+    padding-bottom: 70px;
+    padding-right: 60px;
+    float: right;
+    position: absolute;
+    top: 636px;
+    right: 200px;
+    left:679px; 
+}
+nav.menu1 li a { 
+    text-decoration: none; 
+    color: white;
+    background-color: black;
+    font-size: 20px;
+    padding-top: 20px;
+}
+nav.menu1 li { 
+    display: inline;
+    padding-left: 40px; 
+    margin-bottom: auto;
+    margin-top: auto ;
+.h1{
+    text-align: center;
+}
+.ciclo1{
+    background-color: wheat;
+}

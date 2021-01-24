@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<head>
+        <link rel="stylesheet" type="text/css" href="css.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+        crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+        crossorigin=""></script>
+        <script src='pontos_geojson.geojson'></script>
+        <script src='matosinhoss.geojson'></script>
+        <script src='hospitais.geojson'></script>
+        <script src='farmacias.geojson'></script>
+  <style>
+      #mapDIV{
+        height: 500px;
+        width: 800px;
+        border: solid 1px black;
+      }
+</style>
+
+</head>
+<body>
+    
+    
+    <header> 
+        <h3 id="titulo"> TRABALHOS REALIZADOS </h3>
+    </header>
+    
+
+    <nav class="menu1">
+        <div class="menus">
+        <ul>
+            <li class="plink"> <a href= "inicio.html" > Página inicial </a> </li>
+            <li class="plink"> <a href= "experienciaprofissional.html" > Experiência Profissional </a> </li>
+            <li class="plink"> <a href= "educacaoformacao.html" > Educação e Formação e Trabalhos realizados </a> </li>
+            <li class="plink"> <a href= "competenciaslinguisticas.html" > Competências Linguísticas </a> </li>
+            <li class="plink"> <a href= "contactos.html"> Contactos </a></li>
+        </ul>
+        </div>
+    </nav>
+
+    <header>
+        <h2> Lares de idosos no concelho de matosinhos </h2>
+    </header>
+    
+    
+    <div id='mapDIV'>i</div>
+    <script>
+        let map = L.map(document.getElementById('mapDIV'),
+        { center: [41.220,-8.67950],
+            zoom: 12
+        });
+        let basemap =L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png',{ 
+            });
+            basemap.addTo(map);
+
+        var popup = L.popup();
+
+        var scale = L.control.scale()
+        scale.addTo(map);
+
+        
+        //inserir pontos e popups por geojson
+        L.geoJSON(hospitais, {
+            pointToLayer: function(feature, latlng) {
+                var saudeIcon = L.icon({
+                iconUrl: 'hospital.png',
+                iconSize: [20, 20],
+                iconAnchor: [22, 94],
+                popupAnchor: [-3, -76]
+        });
+        return L.marker(latlng, {icon : saudeIcon});
+        },
+            onEachFeature: function (feature, layer) {
+                let name = feature.properties.nome;
+                let mor = feature.properties.morada;
+                layer.bindPopup ( '<h3>' + name + '</h3> <br><h3>' + mor );
+                layer.on('mouseover', function(){layer.openPopup();})
+                layer.on('mouseout', function(){layer.closePopup();})
+            }
+        }).addTo(map);
+
+        L.geoJSON(farmacias, {
+            pointToLayer: function(feature, latlng) {
+                var saudeIcon1 = L.icon({
+                iconUrl: 'saude.png',
+                iconSize: [20, 20],
+                iconAnchor: [22, 94],
+                popupAnchor: [-3, -76]
+        });
+        return L.marker(latlng, {icon : saudeIcon1});
+        },
+            onEachFeature: function (feature, layer) {
+                let namef = feature.properties.nomef;
+                let morf = feature.properties.moradaf;
+                layer.bindPopup ( '<h3>' + namef + '</h3> <br><h3>' + morf );
+                layer.on('mouseover', function(){layer.openPopup();})
+                layer.on('mouseout', function(){layer.closePopup();})
+            }
+        }).addTo(map);
+        
+    
+        L.geoJSON(matosinhos).addTo(map);
+        
+        //pontos manualmente 
+        var myDataPoint1 = L.marker([41.20619174374748, -8.691257202284785]).addTo(map);
+        var myDataPoint2 = L.marker([41.19174831843739, -8.698614489254075]).addTo(map);
+        var myDataPoint3 = L.marker([41.21242646775932, -8.634542089253209]).addTo(map);
+        var myDataPoint4 = L.marker([41.191673697908406, -8.633021073912078]).addTo(map);
+        var myDataPoint5 = L.marker([41.18489546283977, -8.68653763158336]).addTo(map);
+        var myDataPoint6 = L.marker([41.22499985483964, -8.69735308740429]).addTo(map);
+        var myDataPoint7 = L.marker([41.19654558468949, -8.602812918089327]).addTo(map);
+        var myDataPoint8 = L.marker([41.19563002577331, -8.667638162266826]).addTo(map);
+        var myDataPoint9 = L.marker([41.20150807785147, -8.665031402747198]).addTo(map);
+        var myDataPoint10 = L.marker([41.19757941904113, -8.661503831582836]).addTo(map);
+        var myDataPoint11 = L.marker([41.259192179849464, -8.717849133428787]).addTo(map);
+        var myDataPoint12 = L.marker([41.200493963971496, -8.641280316240774]).addTo(map);
+        var myDataPoint13 = L.marker([41.21595411438294, -8.675901758569154]).addTo(map);
+        var myDataPoint14 = L.marker([41.185401489280494, -8.684126573912895]).addTo(map);
+        var myDataPoint15 = L.marker([41.1860471131734, -8.684546573912302]).addTo(map);
+        var myDataPoint16 = L.marker([41.185834613749876, -8.693388502747798]).addTo(map);
+        var myDataPoint17 = L.marker([41.22173301632793, -8.679715502746367]).addTo(map);
+        var myDataPoint18 = L.marker([41.22080387881375, -8.614342431581882]).addTo(map);
+        var myDataPoint19 = L.marker([41.18576813961764, -8.65426634507683]).addTo(map);
+        var myDataPoint20 = L.marker([41.209061236493795, -8.681625216240416]).addTo(map);
+        var myDataPoint21 = L.marker([41.188098303719606, -8.650025145076722]).addTo(map);
+        myDataPoint1.bindPopup("<h3>ATI - Amigos da 3ª idade</h3> <p> Utentes: <br> 20 utentes <br> Morada: <br> Rua Emilio Garcia Ramirez, 86 (Monte Espinho)<br> Local: <br> Leça da Palmeira, Portugal <br> Website: <br> <a href='https://www.atimonteespinho.com/' target='_blank'>Informações sobre a ATI - Amigos da 3ª idade.</a> <br> <img width='150' height='75' src='amigos3idade.png' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture allowfullscreen'></img</p>");
+        myDataPoint2.bindPopup("<h3>Associaçao Amigos Aposentados de Leça da Palmeira</h3><p>Leça da Palmeira, Portugal <br> <a href='https://www.cm-matosinhos.pt/pages/1477?poi_id=126' target='_blank'>Informações sobre a Associaçao Amigos Aposentados de Leça da Palmeira.</a> <br> <img width='150' height='75' src='AAALP.jpg' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture allowfullscreen'></img></p>");
+        myDataPoint3.bindPopup("<h3>CSLB - Centro Social Leça do Balio </h3><p>Local: <br> Leça do Balio, Portugal <br> Website: <br> <a href='https://centrosocialdelecadobalio.pt/' target='_blank'>Informações sobre o CSLB - Centro Social Leça do Balio.</a> <br> <img width='150' height='75' src='CSLB.jpg' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture allowfullscreen'></img></p>");
+        myDataPoint4.bindPopup("<h3>Centro Social e Paroquial do Padrão da Légua </h3><p>Local: <br> Leça do Balio, Portugal <br> Website: <br> <a href='https://www.cm-matosinhos.pt/pages/1217?poi_id=8253' target='_blank'>Informações sobre o Centro Social e Paroquial do Padrão da Légua.</a> <br> <img width='150' height='75' src='padraolegua.jpg' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture allowfullscreen'></img></p>");
+        myDataPoint5.bindPopup("<h3>APAM - Associação dos pescadores dos Aposentados de matosinhos</h3><p>Local: <br> Matosinhos, Portugal <br> Website: <br> <a href='https://www.lardospescadores.org/index.php/contactos' target='_blank'>Informações sobre a APAM - Associação dos pescadores dos Aposentados de matosinhos.</a> <br> <img width='150' height='75' src='APAM.jpg' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture allowfullscreen'></img></p>");
+        myDataPoint6.bindPopup("<h3>Centro Social e Paroquial Padre Ângelo Ferreira Pinto </h3><p>Local: <br> Perafita, Portugal <br> Website: <br> <a href='https://centropadreangelo.pt/' target='_blank'>Informações sobre o Centro Social e Paroquial Padre Ângelo Ferreira Pinto.</a> <br> <img width='150' height='75' src='padreangeloferreirapinto.jpg' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture allowfullscreen'></img></p>");
+        myDataPoint7.bindPopup("<h3>CATI - Centro de Apoio à 3ª idade </h3><p>Local: <br> São Mamede Infesta, Portugal <br> Website: <br> <a href='https://www.cm-matosinhos.pt/servicos-municipais/acao-social-e-saude/servicos-e-respostas-sociais/terceira-idade/atividades-matosinhos-senior/poi/cati-centro-de-apoio-a-terceira-idade-de-sao-mamede-de-infesta' target='_blank'>Informações sobre a CATI - Centro de Apoio à 3ª idade.</a> <br> <img width='150' height='75' src='CATI.jpg' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture allowfullscreen'></img></p>");
+        myDataPoint8.bindPopup("<h3>ASDG - Associação Social e de Desenvolvimento de Guifões</h3><p>Local: <br> Guifões, Portugal <br> Website: <br> <a href='https://asdg-pt.webnode.pt/' target='_blank'>Informações sobre a ASDG - Associação Social e de Desenvolvimento de Guifões.</a> <br> <img width='150' height='75' src='ASDG.jpg' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture allowfullscreen'></img></p>");
+        myDataPoint9.bindPopup("<h3>CCSSG - Centro Cultural e de Solidariedade Social de Guifões </h3><p>Local: <br> Guifões, Portugal <br> Website: <br> <a href='https://ccssguifoes.pt/' target='_blank'>Informações sobre o CCSSG - Centro Cultural e de Solidariedade Social de Guifões .</a> <br> <img width='150' height='75' src='CCSSG.jpg' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture allowfullscreen'></img></p>");
+        myDataPoint10.bindPopup("<h3>Residência Geriátrica Canto D'Encanto ( do CIVAS) </h3><p>Local: <br> Guifões, Portugal <br> Website: <br> <a href='http://civas.pt/lar_apresenta.php' target='_blank'>Informações sobre a Residência Geriátrica Canto D'Encanto ( do CIVAS).</a> <br> <img width='150' height='75' src='Res_geriatrica.jpg' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture allowfullscreen'></img></p>");
+        myDataPoint11.bindPopup("<h3>Centro Social Padre Ramos </h3><p>Local: <br> Lavra, Portugal <br> Website: <br> <a href='https://www.cspadreramos.com/' target='_blank'>Informações sobre o Centro Social Padre Ramos.</a> <br> <img width='75' height='150' src='padreramos.jpg' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture allowfullscreen'></img></p>");
+        myDataPoint12.bindPopup("<h3>Centro Social e Cultural de Custóias</h3><p>Local: <br> Custóias, Portugal <br> Website: <br> <a href='https://www.csccustoias.pt/' target='_blank'>Informações sobre o Centro Social e Cultural de Custóias.</a> <br> <img width='150' height='75' src='custoias.jpg' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture allowfullscreen'></img></p>");
+        myDataPoint13.bindPopup("<h3>Centro Social e Paroquial Santa Cruz do Bispo </h3><p>Local: <br> Santa Cruz do Bispo, Portugal <br> Website: <br> <a href='http://www.centrobispo.pt/home/' target='_blank'>Informações sobre o Centro Social e Paroquial Santa Cruz do Bispo .</a> <br> <img width='150' height='75' src='CSPSCB.jpg' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture allowfullscreen'></img></p>");
+        myDataPoint14.bindPopup("<h3>Lar de Santana </h3><p>Local: <br> Matosinhos, Portugal <br> Website: <br> <a href='https://www.lardesantana.pt/' target='_blank'>Informações sobre o Lar de Santana.</a> <br> <img width='150' height='75' src='larsantana.jpg' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture allowfullscreen'></img></p>");
+        myDataPoint15.bindPopup("<h3>Centro de dia da Irmandade da Santa Casa da Misericórdia do Bom Jesus de Matosinhos </h3><p>Local: <br> Matosinhos, Portugal <br> Website: <br> <a href='http://www.scmbjm.pt/' target='_blank'>Informações sobre o Centro de dia da Irmandade da Santa Casa da Misericórdia do Bom Jesus de Matosinhos.</a> <br> <img width='150' height='75' src='SCMBJMat.jpg' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture allowfullscreen'></img></p>");
+        myDataPoint16.bindPopup("<h3>Universidade Sénior Florbela Espanca</h3><p>Local: <br> Matosinhos, Portugal <br> Website: <br> <a href='https://www.usflorbelaespanca.org/index.php' target='_blank'>Informações sobre a Universidade Sénior Florbela Espanca.</a> <br> <img width='150' height='75' src='USFE.jpg' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture allowfullscreen'></img></p>");
+        myDataPoint17.bindPopup("<h3>AASP - Associação de Apoio Social de Perafita</h3><p>Local: <br> Perafita, Portugal <br> Website: <br> <a href='https://www.laresonline.pt/pt/valencia/apoio-domiciliario/equipamento/2509-apoio-domiciliario-da-associacao-de-apoio-social-de-perafita/' target='_blank'>Informações sobre a AASP - Associação de Apoio Social de Perafita.</a> <br> <img width='150' height='75' src='AASP.jpg' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture allowfullscreen'></img></p>");
+        myDataPoint18.bindPopup("<h3>Lar do Comércio</h3><p>Local: <br> Leça do Balio, Portugal <br> Website: <br> <a href='http://www.olardocomercio.pt/' target='_blank'>Informações sobre o Lar do Comércio.</a> <br> <img width='150' height='75' src='larcomercio.jpg' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture allowfullscreen'></img></p>");
+        myDataPoint19.bindPopup("<h3>CIVAS - Centro de Infância, velhice e Ação Social </h3><p>Local: <br> Senhora da Hora, Portugal <br> Website: <br> <a href='https://www.civas.pt/contactos.php' target='_blank'>Informações sobre o CIVAS - Centro de Infância, velhice e Ação Social .</a> <br> <img width='150' height='75' src='CIVAS.jpg' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture allowfullscreen'></img></p>");
+        myDataPoint20.bindPopup("<h3>Centro de Convivio de dia da 3ª idade - Vila Lia </h3><p>Local: <br> Santa Cruz do Bispo, Portugal <br> Website: <br> <a href='https://www.cm-matosinhos.pt/servicos-municipais/acao-social-e-saude/servicos-e-respostas-sociais/terceira-idade/centro-de-convivio/poi/centro-de-convivio-de-dia-da-terceira-idade-de-santa-cruz-do-bispo' target='_blank'>Informações sobre o Centro de Convivio de dia da 3ª idade - Vila Lia .</a> <br> <img width='150' height='75' src='CCA3IDADE.jpg' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture allowfullscreen'></img></p>");
+        myDataPoint21.bindPopup("<h3>Associação de solidariedade Social Betesda Esperança e Vida</h3><p>Local: <br> Senhora da Hora, Portugal <br> Website: <br> <a href='https://www.laresonline.pt/pt/valencia/lares-e-residencias/equipamento/2258-associacao-betesda-esperanca-e-vida-ipss/' target='_blank'>Informações sobre a Associação de solidariedade Social Betesda Esperança e Vida.</a> <br> <img width='150' height='75' src='ASSBEV.jpg' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture allowfullscreen'></img></p>");
+        
+        //inserir legenda 
+        var legend = L.control({ position : "bottomleft"});
+        legend.onAdd = function(map) {
+            var div = L.DomUtil.create ( "div", "legend");
+            div.innerHTML += '<h3> Legenda do mapa </h3> <br>'
+            div.innerHTML += '<p> <img src="azul.png" height="20px" width="20px"> Limite do concelho de Matosinhos </p>';
+            div.innerHTML += '<span> <img src="saude.png" height="20px" width="20px"> Farmácias </span> <br>';
+            div.innerHTML += '<span> <img src="hospital.png" height="20px" width="20px"> Centros de Saúde e Hospitais </span> <br>';
+            div.innerHTML += '<span> <img src="marker-icon.png" height="30px" width="20px"> Lares de Idosos</span> <br>';
+            return div;
+        }; 
+        legend.addTo(map);
+
+
+</script>
+
+    
+ 
+</body>
+</html>
